@@ -195,7 +195,7 @@
 
 	Author
 	~~~~~~
-	David Barr, aka javidx9, ©OneLoneCoder 2018, 2019, 2020, 2021, 2022
+	David Barr, aka javidx9, Â©OneLoneCoder 2018, 2019, 2020, 2021, 2022
 */
 #pragma endregion
 
@@ -631,42 +631,42 @@ namespace olc
 		T x = 0;
 		T y = 0;
 		v2d_generic() : x(0), y(0) {}
-		v2d_generic(T _x, T _y) : x(_x), y(_y) {}
-		v2d_generic(const v2d_generic& v) : x(v.x), y(v.y) {}
-		v2d_generic& operator=(const v2d_generic& v) = default;
-		T mag() const { return T(std::sqrt(x * x + y * y)); }
-		T mag2() const { return x * x + y * y; }
-		v2d_generic  norm() const { T r = 1 / mag(); return v2d_generic(x * r, y * r); }
-		v2d_generic  perp() const { return v2d_generic(-y, x); }
-		v2d_generic  floor() const { return v2d_generic(std::floor(x), std::floor(y)); }
-		v2d_generic  ceil() const { return v2d_generic(std::ceil(x), std::ceil(y)); }
-		v2d_generic  max(const v2d_generic& v) const { return v2d_generic(std::max(x, v.x), std::max(y, v.y)); }
-		v2d_generic  min(const v2d_generic& v) const { return v2d_generic(std::min(x, v.x), std::min(y, v.y)); }
-		v2d_generic  cart() { return { std::cos(y) * x, std::sin(y) * x }; }
-		v2d_generic  polar() { return { mag(), std::atan2(y, x) }; }
-		T dot(const v2d_generic& rhs) const { return this->x * rhs.x + this->y * rhs.y; }
-		T cross(const v2d_generic& rhs) const { return this->x * rhs.y - this->y * rhs.x; }
-		v2d_generic  operator +  (const v2d_generic& rhs) const { return v2d_generic(this->x + rhs.x, this->y + rhs.y); }
-		v2d_generic  operator -  (const v2d_generic& rhs) const { return v2d_generic(this->x - rhs.x, this->y - rhs.y); }
-		v2d_generic  operator *  (const T& rhs)           const { return v2d_generic(this->x * rhs, this->y * rhs); }
-		v2d_generic  operator *  (const v2d_generic& rhs) const { return v2d_generic(this->x * rhs.x, this->y * rhs.y); }
-		v2d_generic  operator /  (const T& rhs)           const { return v2d_generic(this->x / rhs, this->y / rhs); }
-		v2d_generic  operator /  (const v2d_generic& rhs) const { return v2d_generic(this->x / rhs.x, this->y / rhs.y); }
+		constexpr v2d_generic(T _x, T _y) : x(_x), y(_y) {}
+		constexpr v2d_generic(const v2d_generic& v) : x(v.x), y(v.y) {}
+		constexpr v2d_generic& operator=(const v2d_generic& v) = default;
+		constexpr T mag() const { return T(std::sqrt(x * x + y * y)); }
+		constexpr T mag2() const { return x * x + y * y; }
+		constexpr v2d_generic  norm() const { T r = 1 / mag(); return v2d_generic(x * r, y * r); }
+		constexpr v2d_generic  perp() const { return v2d_generic(-y, x); }
+		constexpr v2d_generic  floor() const { return v2d_generic(std::floor(x), std::floor(y)); }
+		constexpr v2d_generic  ceil() const { return v2d_generic(std::ceil(x), std::ceil(y)); }
+		constexpr v2d_generic  max(const v2d_generic& v) const { return v2d_generic(std::max(x, v.x), std::max(y, v.y)); }
+		constexpr v2d_generic  min(const v2d_generic& v) const { return v2d_generic(std::min(x, v.x), std::min(y, v.y)); }
+		constexpr v2d_generic  cart() { return { std::cos(y) * x, std::sin(y) * x }; }
+		constexpr v2d_generic  polar() { return { mag(), std::atan2(y, x) }; }
+		constexpr T dot(const v2d_generic& rhs) const { return this->x * rhs.x + this->y * rhs.y; }
+		constexpr T cross(const v2d_generic& rhs) const { return this->x * rhs.y - this->y * rhs.x; }
+		constexpr v2d_generic  operator +  (const v2d_generic& rhs) const { return v2d_generic(this->x + rhs.x, this->y + rhs.y); }
+		constexpr v2d_generic  operator -  (const v2d_generic& rhs) const { return v2d_generic(this->x - rhs.x, this->y - rhs.y); }
+		constexpr v2d_generic  operator *  (const T& rhs)           const { return v2d_generic(this->x * rhs, this->y * rhs); }
+		constexpr v2d_generic  operator *  (const v2d_generic& rhs) const { return v2d_generic(this->x * rhs.x, this->y * rhs.y); }
+		constexpr v2d_generic  operator /  (const T& rhs)           const { return v2d_generic(this->x / rhs, this->y / rhs); }
+		constexpr v2d_generic  operator /  (const v2d_generic& rhs) const { return v2d_generic(this->x / rhs.x, this->y / rhs.y); }
 		v2d_generic& operator += (const v2d_generic& rhs) { this->x += rhs.x; this->y += rhs.y; return *this; }
 		v2d_generic& operator -= (const v2d_generic& rhs) { this->x -= rhs.x; this->y -= rhs.y; return *this; }
 		v2d_generic& operator *= (const T& rhs) { this->x *= rhs; this->y *= rhs; return *this; }
 		v2d_generic& operator /= (const T& rhs) { this->x /= rhs; this->y /= rhs; return *this; }
 		v2d_generic& operator *= (const v2d_generic& rhs) { this->x *= rhs.x; this->y *= rhs.y; return *this; }
 		v2d_generic& operator /= (const v2d_generic& rhs) { this->x /= rhs.x; this->y /= rhs.y; return *this; }
-		v2d_generic  operator +  () const { return { +x, +y }; }
-		v2d_generic  operator -  () const { return { -x, -y }; }
-		bool operator == (const v2d_generic& rhs) const { return (this->x == rhs.x && this->y == rhs.y); }
-		bool operator != (const v2d_generic& rhs) const { return (this->x != rhs.x || this->y != rhs.y); }
+		constexpr v2d_generic  operator +  () const { return { +x, +y }; }
+		constexpr v2d_generic  operator -  () const { return { -x, -y }; }
+		constexpr bool operator == (const v2d_generic& rhs) const { return (this->x == rhs.x && this->y == rhs.y); }
+		constexpr bool operator != (const v2d_generic& rhs) const { return (this->x != rhs.x || this->y != rhs.y); }
 		const std::string str() const { return std::string("(") + std::to_string(this->x) + "," + std::to_string(this->y) + ")"; }
 		friend std::ostream& operator << (std::ostream& os, const v2d_generic& rhs) { os << rhs.str(); return os; }
-		operator v2d_generic<int32_t>() const { return { static_cast<int32_t>(this->x), static_cast<int32_t>(this->y) }; }
-		operator v2d_generic<float>() const { return { static_cast<float>(this->x), static_cast<float>(this->y) }; }
-		operator v2d_generic<double>() const { return { static_cast<double>(this->x), static_cast<double>(this->y) }; }
+		constexpr operator v2d_generic<int32_t>() const { return { static_cast<int32_t>(this->x), static_cast<int32_t>(this->y) }; }
+		constexpr operator v2d_generic<float>() const { return { static_cast<float>(this->x), static_cast<float>(this->y) }; }
+		constexpr operator v2d_generic<double>() const { return { static_cast<double>(this->x), static_cast<double>(this->y) }; }
 	};
 
 	// Note: joshinils has some good suggestions here, but they are complicated to implement at this moment, 
